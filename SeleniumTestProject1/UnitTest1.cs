@@ -26,15 +26,6 @@ namespace SeleniumTestProject1
             
             Driver.Url = test_url;
             Driver.FindElement(By.XPath("//*[contains(text(),'Log In')]")).Click();
-            //Driver.FindElement(By.ClassName("_34uo64r1j-TcpBGXAQcZJ1")).Click();
-            //Driver.FindElement(By.XPath("(//*[@class='AnimatedForm__textInput '])[1]"));
-
-
-
-
-
-            //Driver.FindElement(By.XPath("(//*[@class='AnimatedForm__textInput '])[2]")).Click();
-            //Driver.FindElement(By.XPath("(//*[@class='AnimatedForm__textInput '])[2]")).SendKeys("382982fF" + Keys.Enter);
            
         }
 
