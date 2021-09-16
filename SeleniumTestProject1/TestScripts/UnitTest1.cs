@@ -40,8 +40,10 @@ namespace SeleniumTestProject1
             Driver.Url = test_url_reddit;
             //Driver.Navigate().GoToUrl("https://www.reddit.com/login/?experiment_d2x_2020ify_buttons=enabled&experiment_d2x_sso_login_link=enabled");
             
+
  
             wait.Until(webDriver => webDriver.FindElement(By.XPath("//*[@id='loginUsername']")).Displayed); //waits for element to show up
+
 
             //Driver.FindElement(By.Id("loginUsername")).SendKeys("FuckBigDateh");
 
@@ -57,8 +59,8 @@ namespace SeleniumTestProject1
 
 
 
-            Driver.Url = test_url;
-            Driver.FindElement(By.XPath("//*[contains(text(),'Log In')]")).Click();
+            
+            //Driver.FindElement(By.XPath("//*[contains(text(),'Log In')]")).Click();
            
         }
 
