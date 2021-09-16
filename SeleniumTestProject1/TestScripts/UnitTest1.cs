@@ -12,8 +12,12 @@ namespace SeleniumTestProject1
         String test_url_reddit_login = "https://www.reddit.com/login/?experiment_d2x_2020ify_buttons=enabled&experiment_d2x_sso_login_link=enabled";
         String test_url_google = "https://google.com";
 
-        IWebDriver Driver;
+        ChromeDriver Driver;
 
+
+
+        //*[text()[contains(.,'Next')]]
+        //*[contains(text().'abc')]
 
         [SetUp]
         public void Setup()
@@ -36,7 +40,7 @@ namespace SeleniumTestProject1
             Driver.Url = test_url_reddit;
             //Driver.Navigate().GoToUrl("https://www.reddit.com/login/?experiment_d2x_2020ify_buttons=enabled&experiment_d2x_sso_login_link=enabled");
             
-            wait.Until(webDriver => webDriver.FindElement(By.XPath("//*[@id='loginUsername']")).Displayed); //waits for element to show up
+            //wait.Until(webDriver => webDriver.FindElement(By.XPath("//*[@id='loginUsername']")).Displayed); //waits for element to show up
 
             //Driver.FindElement(By.Id("loginUsername")).SendKeys("FuckBigDateh");
 
