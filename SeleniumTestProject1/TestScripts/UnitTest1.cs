@@ -3,19 +3,25 @@ using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
 using OpenQA.Selenium.Interactions;
 using OpenQA.Selenium.Support.UI;
+using SeleniumTestProject1.Configuration;
 using System;
 
 namespace SeleniumTestProject1
 {
-    public class Tests{
+    public class Tests : ReusableMethods
+    {
+        ReusableMethods reusable = new ReusableMethods();
         String test_url_reddit = "https://www.reddit.com";
         String test_url_reddit_login = "https://www.reddit.com/login/?experiment_d2x_2020ify_buttons=enabled&experiment_d2x_sso_login_link=enabled";
         String test_url_google = "https://google.com";
 
         ChromeDriver Driver;
 
-
-
+        
+        //identifier examples
+        //IMPORTANT CHEAT SHEAT READ HERE
+        // to kill all chromedriver tasks on console the command is: taskkill /f /im chromedriver.exe       
+        // //div//h4[contains(text(),'Log In')]
         //*[text()[contains(.,'Next')]]
         //*[contains(text().'abc')]
 
@@ -24,24 +30,22 @@ namespace SeleniumTestProject1
         {
             ChromeOptions Options = new ChromeOptions();
             Options.AddArguments("--disable-notifications");
-            Driver = new ChromeDriver(Options);
-
-
-            Driver.Manage().Window.Maximize();
-            //WebDriverWait wait = new WebDriverWait(Driver, TimeSpan.FromSeconds(10)); wait object to be used
+            Driver = new ChromeDriver(Options);            
+            Driver.Manage().Window.Maximize();           
         }
 
         [Test]
         public void Test1(){
 
-
+            #region declaration
             WebDriverWait wait = new WebDriverWait(Driver, TimeSpan.FromSeconds(10));
+            #endregion
 
-            Driver.Url = test_url_reddit;
+            //few different ways to get to the URL
             //Driver.Navigate().GoToUrl("https://www.reddit.com/login/?experiment_d2x_2020ify_buttons=enabled&experiment_d2x_sso_login_link=enabled");
-            
+            //reusable.GoToURL("https://reddit.com");
+            Driver.Url = test_url_reddit;
 
- 
             wait.Until(webDriver => webDriver.FindElement(By.XPath("//*[@id='loginUsername']")).Displayed); //waits for element to show up
 
 
@@ -116,6 +120,15 @@ namespace SeleniumTestProject1
             signUp_account_activation.Click();
             
 
+        }
+
+        [Test]
+        public void Test6() {
+            Driver.Navigate().GoToUrl("https://techlistic.com/p/selenium-practice-form.html");
+            Driver.FindElement(By.XPath("//div//input[@name='firstname']")).SendKeys("muadib");
+            Driver.FindElement(By.XPath("//div//input[@name='lastname']")).SendKeys("chosenone");
+            Driver.FindElement(By.XPath("//div//input[@id='sex-0']")).Click();
+            Driver.FindElement(By.XPath("//div//input[@id='datepicker']")).SendKeys("12/12/12");
         }
 
         [TearDown]
