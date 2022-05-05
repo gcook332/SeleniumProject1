@@ -23,6 +23,12 @@ steps:
     restoreSolution: '**/*.sln'
     feedsToUse: 'select'
 
+- task: DotNetCoreCLI@2
+  inputs:
+   command: test
+   projects: '**/*Tests/*.csproj'
+   arguments: '--configuration $(buildConfiguration)'
+
 - task: VSBuild@1
   inputs:
     solution: '$(solution)'
