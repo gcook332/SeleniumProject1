@@ -15,9 +15,14 @@ variables:
   buildConfiguration: 'Release'
 
 steps:
-- task: DotNetCoreCLI@2
+- task: VSTest@2
   inputs:
-   command: test
-   projects: '**/*Tests/*.csproj'
-   arguments: '--configuration $(buildConfiguration)'
-
+    testSelector: 'testAssemblies'
+    testAssemblyVer2: |
+      **\*test*.dll
+      !**\*TestAdapter.dll
+      !**\obj\**
+    searchFolder: '$(System.DefaultWorkingDirectory)'
+    testFiltercriteria: 'Category="parallelTests"'
+    vsTestVersion: '16.0'
+    runSettingsFile: 'test.runsettings'
