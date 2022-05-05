@@ -8,6 +8,7 @@ using System;
 
 namespace SeleniumTestProject1
 {
+    [TestFixture]
     public class Tests : ReusableMethods
     {
         ReusableMethods reusable = new ReusableMethods();
@@ -15,9 +16,8 @@ namespace SeleniumTestProject1
         String test_url_reddit_login = "https://www.reddit.com/login/?experiment_d2x_2020ify_buttons=enabled&experiment_d2x_sso_login_link=enabled";
         String test_url_google = "https://google.com";
 
-        ChromeDriver Driver;
 
-        
+
         //identifier examples
         //IMPORTANT CHEAT SHEAT READ HERE
         // to kill all chromedriver tasks on console the command is: taskkill /f /im chromedriver.exe       
@@ -25,9 +25,13 @@ namespace SeleniumTestProject1
         //*[text()[contains(.,'Next')]]
         //*[contains(text().'abc')]
 
+        string _appUrl = TestContext.Parameters["reddit"];
+        string BrowserType = TestContext.Parameters["Browser"];
+
         [SetUp]
         public void Setup()
         {
+            
             ChromeOptions Options = new ChromeOptions();
             Options.AddArguments("--disable-notifications");
             Driver = new ChromeDriver(Options);            
@@ -48,7 +52,7 @@ namespace SeleniumTestProject1
 
             wait.Until(webDriver => webDriver.FindElement(By.XPath("//*[@id='loginUsername']")).Displayed); //waits for element to show up
 
-
+           
             //Driver.FindElement(By.Id("loginUsername")).SendKeys("FuckBigDateh");
 
 
@@ -131,10 +135,24 @@ namespace SeleniumTestProject1
             Driver.FindElement(By.XPath("//div//input[@id='datepicker']")).SendKeys("12/12/12");
         }
 
+        [Test]
+        public void UsingRunSettingsParameters()
+        {
+            
+            Driver.Navigate().GoToUrl(_appUrl);
+            Assert.That(Driver.PageSource.Contains("reddit"), Is.EqualTo(true), "reddit not present on web page");
+        }
+
+        public void Test7() { 
+            
+        }
+
+
+
         [TearDown]
         public void Teardown() 
         {
-            //Driver.Close();
+            Driver.Close();
         }
     }
 }

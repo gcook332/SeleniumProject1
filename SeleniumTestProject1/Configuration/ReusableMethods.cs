@@ -1,39 +1,46 @@
-﻿using OpenQA.Selenium;
+﻿using NUnit.Framework;
+using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
+using OpenQA.Selenium.Firefox;
+using OpenQA.Selenium.Support.UI;
 using System;
 using System.Collections.Generic;
 using System.Text;
 
 namespace SeleniumTestProject1.Configuration
 {
-    public class ReusableMethods
+    public class ReusableMethods : Constants
     {
-
-        ChromeDriver Driver = new ChromeDriver();
-
-
-        
+     
+        //public ReusableMethods() {}    
 
 
-        public void RedditLoginClick() {
-            Driver.FindElement(By.XPath("//div//a[contains(text(),'Log In')]")).Click();
+
+
+        public void OpenBrowser(string browserType) {
+
+            if (TestContext.Parameters["Browser"] == "Chrome")
+            {
+                Driver = new ChromeDriver();
+                Driver.Manage().Window.Maximize();
+
+            }
+            else if (TestContext.Parameters["Browser"] == "Firefox")
+            {
+                Driver = new FirefoxDriver();
+                Driver.Manage().Window.Maximize();
+            }
+
+
+            //ChromeOptions Options = new ChromeOptions();
+            //Options.AddArguments("--disable-notifications");
+            //Driver = new ChromeDriver(Options);
+            //Driver.Manage().Window.Maximize();
+            //Driver.Navigate().GoToUrl(URL);
         }
+       
 
 
-        public void helloWorld() {
-            Console.WriteLine("hello world");
-        }
-
-        public void GoToURL(string URL) {
-
-            ChromeDriver Driver;
-            ChromeOptions Options = new ChromeOptions();
-            Options.AddArguments("--disable-notifications");
-            Driver = new ChromeDriver(Options);
-            Driver.Manage().Window.Maximize();
-            Driver.Navigate().GoToUrl(URL);
-        }
-        
     }
     
 }

@@ -15,20 +15,19 @@ namespace SeleniumTestProject1.TestScripts
 
         ReusableMethods reusable = new ReusableMethods();
         TechListic techListic = new TechListic();
-        ChromeDriver Driver;
 
         [Test]
         [Category("techListic")]
         public void Test1() {
 
-            reusable.GoToURL("https://reddit.com");
+            //reusable.GoToURL("https://reddit.com");
 
         }
 
         [Test]
         [Category("techListic")]
         public void Test2() {
-            reusable.GoToURL("https://techlistic.com/p/selenium-practice-form.html");
+            
             techListic.signup("muadib", "chosenOne", "12/12/12");
             
 
