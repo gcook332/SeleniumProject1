@@ -16,11 +16,12 @@ variables:
 
 steps:
 
-- task: VSBuild@1
+- task: MSBuild@1
   inputs:
-    solution: '**\*.sln'
-    vsVersion: '16.0'
-    
+    solution: '**/*.sln'
+    msbuildArchitecture: 'x64'
+    clean: true
+
 - task: VSTest@2
   inputs:
     testSelector: 'testAssemblies'
@@ -30,5 +31,18 @@ steps:
       !**\obj\**
     searchFolder: '$(System.DefaultWorkingDirectory)'
     testFiltercriteria: 'Category="parallelTests"'
-    vsTestVersion: '16.0'
     runSettingsFile: 'test.runsettings'
+    runInParallel: true
+    codeCoverageEnabled: true
+
+- task: PublishTestResults@2
+  inputs:
+    testResultsFormat: 'JUnit'
+    testResultsFiles: '**/TEST-*.xml'
+
+
+- task: PublishPipelineArtifact@1
+  inputs:
+    targetPath: 'Reports'
+    artifact: 'Test'
+    publishLocation: 'pipeline'
