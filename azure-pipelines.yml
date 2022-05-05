@@ -7,7 +7,7 @@ trigger:
 - master
 
 pool:
-  vmImage: 'windows-latest'
+  vmImage: 'windows-2019'
 
 variables:
   solution: '**/*.sln'
@@ -19,7 +19,9 @@ steps:
 
 - task: NuGetCommand@2
   inputs:
-    restoreSolution: '$(solution)'
+    command: 'restore'
+    restoreSolution: '**/*.sln'
+    feedsToUse: 'select'
 
 - task: VSBuild@1
   inputs:
@@ -29,13 +31,8 @@ steps:
     configuration: '$(buildConfiguration)'
 
 
-- task: NuGetCommand@2
-  inputs:
-    command: 'restore'
-    restoreSolution: '**/*.sln'
-    feedsToUse: 'select'
-
 - task: VSTest@2
+  displayName: "Vs Test Assemblies"
   inputs:
     testSelector: 'testAssemblies'
     testAssemblyVer2: |
@@ -44,3 +41,4 @@ steps:
       !**\obj\**
     searchFolder: '$(System.DefaultWorkingDirectory)'
     testFiltercriteria: 'Category="parallelTests"'
+    runSettingsFile: test.runsettings
