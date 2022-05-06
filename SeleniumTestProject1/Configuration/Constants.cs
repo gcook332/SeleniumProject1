@@ -12,6 +12,8 @@ namespace SeleniumTestProject1.Configuration
         internal const ParallelScope ParallelExecutionScope = ParallelScope.All;
 
         protected IWebDriver Driver { get; set; }
+
+        
        
 
 

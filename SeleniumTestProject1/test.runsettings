@@ -1,11 +1,26 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <RunSettings>
 	<!-- Parameters used by tests at run time -->
-	<TestRunParameters>
-		<Parameter name="reddit" value="https://www.reddit.com" />
+	<TestRunParameters>		
 		<Parameter name="Browser" value="Chrome" />
 		<Parameter name="webAppUserName" value="Admin" />
 		<Parameter name="webAppPassword" value="Password" />
+
+
+		<Parameter name="reddit" value="https://www.reddit.com" />
+		<Parameter name="reddit_stage" value="https://www.reddit-stg.com" />
+
+		<Parameter name="google_prod" value="https://www.google.com" />
+		<Parameter name="google_stage" value="https://www.google-stg.com" />
+		
+		
+		
+		
+		
+		<Parameter name="Environment" value="prod"/>
+
+		<Parameter name="DefaultExecutiontype" value="chrome"/>
+		
 	</TestRunParameters>
 
 </RunSettings>

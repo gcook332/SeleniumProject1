@@ -11,19 +11,13 @@ namespace SeleniumTestProject1.TestScripts
     
     class UnitTest3 : ReusableMethods {
 
-        string Chrome = "Chrome";
 
         [Test]
         public void OpenBrowser()
         {
 
-            ReusableMethods reuse = new ReusableMethods();
-
-            reuse.OpenBrowser(Chrome);
+            OpenBrowser(TestContext.Parameters["DefaultExecutiontype"]);
             
-
-
-
             
         }
 

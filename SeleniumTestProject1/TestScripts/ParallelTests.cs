@@ -90,14 +90,16 @@ namespace SeleniumTestProject1.TestScripts
 
         [Test]
         [Category("parallelTests")]
+        [Category("BestTest")]
         public void SeleniumGoogleSearch()
         {
-
-            Driver = new ChromeDriver();            
-            Driver.Navigate().GoToUrl("https://google.com");
-            Driver.FindElement(By.Name("q")).SendKeys("Selenium");
-            Driver.FindElement(By.Name("q")).SendKeys(Keys.Return);
-            NUnit.Framework.Assert.That(Driver.PageSource.Contains("Selenium"), Is.EqualTo(true), "Selenium text not present");
+                       
+            OpenBrowser(TestContext.Parameters["DefaultExecutiontype"]);
+            Driver.Navigate().GoToUrl(TestContext.Parameters["google_prod"] + ReusableMethods.Environment); 
+            //LaunchApp(TestContext.Parameters["google_" + ReusableMethods.Environment].ToString());
+            //Driver.FindElement(By.Name("q")).SendKeys("Selenium");
+            //Driver.FindElement(By.Name("q")).SendKeys(Keys.Return);
+            //NUnit.Framework.Assert.That(Driver.PageSource.Contains("Selenium"), Is.EqualTo(true), "Selenium text not present");
         }
 
         [Test]
