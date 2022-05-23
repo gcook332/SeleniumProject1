@@ -95,7 +95,7 @@ namespace SeleniumTestProject1.TestScripts
         {
                        
             OpenBrowser(TestContext.Parameters["DefaultExecutiontype"]);
-            Driver.Navigate().GoToUrl(TestContext.Parameters["google_prod"] + ReusableMethods.Environment); 
+            Driver.Navigate().GoToUrl(TestContext.Parameters["google_" + ReusableMethods.Environment]); 
             //LaunchApp(TestContext.Parameters["google_" + ReusableMethods.Environment].ToString());
             //Driver.FindElement(By.Name("q")).SendKeys("Selenium");
             //Driver.FindElement(By.Name("q")).SendKeys(Keys.Return);

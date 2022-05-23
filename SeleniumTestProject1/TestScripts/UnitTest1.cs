@@ -25,8 +25,7 @@ namespace SeleniumTestProject1
         //*[text()[contains(.,'Next')]]
         //*[contains(text().'abc')]
 
-        string _appUrl = TestContext.Parameters["reddit"];
-        string BrowserType = TestContext.Parameters["Browser"];
+        
 
         [SetUp]
         public void Setup()
@@ -139,8 +138,8 @@ namespace SeleniumTestProject1
         public void UsingRunSettingsParameters()
         {
             
-            Driver.Navigate().GoToUrl(_appUrl);
-            Assert.That(Driver.PageSource.Contains("reddit"), Is.EqualTo(true), "reddit not present on web page");
+            Driver.Navigate().GoToUrl(TestContext.Parameters["google_" + ReusableMethods.Environment]);
+            Assert.That(Driver.PageSource.Contains("google"), Is.EqualTo(true), "reddit not present on web page");
         }
 
         public void Test7() { 

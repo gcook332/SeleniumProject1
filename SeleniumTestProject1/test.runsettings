@@ -7,10 +7,13 @@
 		<Parameter name="webAppPassword" value="Password" />
 
 
+		<!-- Ex in the test case use *****_ + TestContext.Parameters[Environment] to switch dynamically between stg and prod -->
+
 		<Parameter name="reddit" value="https://www.reddit.com" />
 		<Parameter name="reddit_stage" value="https://www.reddit-stg.com" />
 
 		<Parameter name="google_prod" value="https://www.google.com" />
+		
 		<Parameter name="google_stage" value="https://www.google-stg.com" />
 		
 		

@@ -16,7 +16,7 @@ namespace SeleniumTestProject1.Configuration
 
         //public ReusableMethods() {}    
 
-        internal static string Environment = "";
+        internal static string Environment = TestContext.Parameters["Environment"];
         internal static string DefaultExecutiontype = "";
 
 
